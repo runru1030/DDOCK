@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
+body{
+    background-color: rgb(255, 255, 255);
+    font-family: 'Noto Sans KR', sans-serif;
+    margin: 0;
+    padding:0;
+}
+*{
+    outline: none;
+}
+.Container{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.centerContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+/*Main*/
+.guestContainer{
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: #383838f8;
+}
+.search{
+    width: 100%;
+}
+span{
+    font-size: medium;
+}
+.guestContainer input[type=text], .hostContainer input{
+    padding: 10px 20px;
+    background-color: #fcfcfcd0;
+    border-radius: 20px;
+    border: solid white;
+    margin: 10px;
+    font-size: small;
+    width: 100%;
+}
+.guestContainer form{
+    width: 350px;
+    display: flex;
+    margin-top: 10px;
+}
+.search span{
+    color: white;
+    font-size: large;
+}
+.hostContainer, .storeContainer{
+    background-color: #383838f8;
+    width: 100%;
+    padding: 50px 0px;
+    color: white;
+    height: 300px;
+}
+.hostContainer{
+    padding: 180px 0px;
+}
+.hostContainer input{
+    margin: 5px;
+    width: 130%;
+}
+.hostContainer form{
+    margin: 50px 0px
+}
+.hostContainer input[type=submit]{
+    background-color: #539eb5;
+    width: 150%;
+    color: white;
+    border: none;
+}
+#changeSpan{
+    position: absolute;
+    top:0;
+    right: 0;
+    margin: 10px;
+    color: white;
+    z-index: 999;
+}
+.guest-search-ment{
+    font-size: 80px;
+    padding: 50px 40px;
+    margin-top: 50px;
+    border-radius: 30px;
+    box-shadow: 2px 2px 1px 1px rgb(196, 196, 196);
+    background-color: rgb(242, 242, 242);
+    width: 190px;
+}
+.guest-search-ment *{
+    margin: 10px;
+    color: #539eb5;
+}
+.guest-search-ment[id=nothing-ment] *{
+    color: #b55353;
+}
+.storeBox{
+    box-shadow: 2px 2px 2px 2px rgb(196, 196, 196);
+    background-color: rgb(243, 243, 243);
+    border-radius: 10px;
+    width: 280px;
+    padding: 20px;
+    display: flex;
+    margin: 20px;
+}
+.storeBox #go{
+    transform: translate(150px,0px);
+}
+.storeBox #subName{
+    padding-left: 10px;
+    font-size: x-small;
+}
+/*guestStore*/
+.waitInfo{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 15px 50px;
+    width: 50%;
+    border-radius: 20px;
+    margin: 30px 0px;
+}
+.waitInfo span{
+    font-size: x-large;
+    font-weight: 600;
+    margin: 5px;
+    color: rgb(60, 60, 60);
+}
+.waitInfo #number{
+    color: #539eb5;
+    font-size: 50px;
+    margin-left: 50px;
+}
+.waitInfo #small{
+    font-size: medium;
+}
+#storeName{
+    font-size: large;
+    font-weight: 600;
+}
+#storeSubName{
+    font-size: small;
+    margin: 5px;
+}
+#reserve{
+    font-size: medium;
+    padding: 10px 20px;
+    background-color: #539eb5;
+    margin: 10px;
+    border-radius: 10px;
+    color: white;
+}
+.storeinfo{
+    width: 90%;
+    font-size: x-small;
+    display: flex;
+    flex-direction: column;
+}
+.storeinfo hr{
+    width: 100%;
+    border: none;
+    margin-top: 50px;
+    border-top: thin solid rgba(68, 68, 68, 0.227);
+}
+.storeinfo #title{
+    margin-right: 190px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: small;
+    color: rgb(79, 79, 79);
+}
+.storeContainer{
+    padding: 30px;
+}
