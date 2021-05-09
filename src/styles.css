@@ -33,6 +33,7 @@ body{
 }
 span{
     font-size: medium;
+    color: #383838f8;
 }
 .guestContainer input[type=text], .hostContainer input{
     padding: 10px 20px;
@@ -109,19 +110,28 @@ span{
     margin: 20px;
 }
 .storeBox #go{
-    transform: translate(150px,0px);
+    position: absolute;
+    transform: translate(260px,0px);
 }
 .storeBox #subName{
     padding-left: 10px;
     font-size: x-small;
 }
 /*guestStore*/
+.storeContainer{
+    
+    height: 100%;
+}
+.storeContainer span{
+    color: white;
+}
 .waitInfo{
     display: flex;
     flex-direction: column;
     background-color: white;
     padding: 15px 50px;
-    width: 50%;
+    padding-bottom: 30px;
+    width: 200px;
     border-radius: 20px;
     margin: 30px 0px;
 }
@@ -174,6 +184,123 @@ span{
     font-size: small;
     color: rgb(79, 79, 79);
 }
-.storeContainer{
-    padding: 30px;
+/*hostStore*/
+#store-del{
+    padding: 50px;
+    color: rgb(184, 67, 67);
+}
+.waitInfo-wrap{
+    margin: 50px 0px;
+}
+.waitInfo-wrap form{
+    margin-bottom: 30px;
+}
+.waitInfo-wrap input[type=text]{
+    width: 50px;
+    margin-left: 30px;
+    font-size: xx-large;
+    text-align: end;
+    border-radius: 0;
+    color: rgb(184, 67, 67);
+    border: thin solid rgb(112, 112, 112);
+    
+}
+.waitInfo-wrap input[type=submit]{
+    font-size: medium;
+    padding: 10px 20px;
+    background-color: #539eb5;
+    border: none;
+    margin: 10px;
+    border-radius: 10px;
+    color: white;
+    transform: translate(100px, 0);
+}
+/*addSotre*/
+.addStore{
+    flex-direction: row;
+    width: 400px;
+}
+.addStore-form{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 50px 30px;
+    width: 100%;
+}
+.addStore-form *{
+    margin: 10px 0px;
+}
+.addStore-form input[type=text], #textArea{
+    padding: 10px;
+    border: thin solid #b8b8b8f8;
+    border-radius: 0;
+}
+.title{
+    background-color: #383838f8;
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 30px 0px;
+    color: white;
+}
+
+#textArea{
+    overflow:hidden;
+    resize: none;
+}
+.postCode{
+    width: 120%;
+}
+.addStore-form-time input{
+    width: 30px;
+}
+#search-box{
+    background-color: whitesmoke;
+    width: 100px;
+    text-align: center;
+    padding: 10px 0px;
+}
+#require-mark{
+    color: #b55353;
+}
+#address{
+    padding: 10px;
+    border: thin solid #b8b8b8f8;
+    border-radius: 0;
+    font-family:sans-serif;
+    font-size: small;
+}
+#attachmentDel{
+    color: #b55353;
+}
+.addStore-form input[type=submit]{
+    padding: 10px 20px;
+    background-color: #539eb5;
+    border: none;
+    margin: 10px;
+    border-radius: 0px;
+    color: white;
+}
+/*hostHome*/
+.hostHome span{
+    color: white;
+}
+.hostHome{
+    margin-bottom: 30px;
+}
+#side-menu{
+    position: absolute;
+    right: 0;
+    padding: 0px 30px;
+    font-size: large;
+    color: #b55353;
+}
+#add-btn{
+    padding: 10px 20px;
+    background-color: #539eb5;
+    border: none;
+    margin: 10px;
+    border-radius: 0px;
+    color: white;
+    
 }

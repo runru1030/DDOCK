@@ -21,12 +21,13 @@ const StoreShow=({isHost, storeObj})=>{
     }
     return(<>
         
-        <div className="storeBox">
+        <div className="storeBox" onClick={onStoreClick}>
             <span>{storeObj.storeName}</span>
             <span id="subName">{storeObj.storeSubName}</span>
-            <span id="go" onClick={onStoreClick}><FontAwesomeIcon icon={faChevronRight}/></span>
+            <span id="go" ><FontAwesomeIcon icon={faChevronRight}/></span>
         </div>
        
     </>);
+
 }
 export default StoreShow;

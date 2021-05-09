@@ -2,6 +2,9 @@ import REACT, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import { authService, dbService } from '../fbase';
 import StoreShow from '../components/StoreShow.js'
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 const HostHome=({hostObj})=>{
     const history=useHistory();
     const [stores, setStores]=useState([]);
@@ -20,16 +23,22 @@ const HostHome=({hostObj})=>{
             }))
             setStores(storeArr);
         })
-    },[])
+    })
 
-    return(<>
-        <span onClick={onAddClick}>매장 추가</span>
-        <span onClick={onLogOutClick}>로그아웃</span>
+    return(<><div className="Container">
+        <div className="centerContainer title hostHome">
+        
+            <span onClick={onLogOutClick} id="side-menu"><FontAwesomeIcon icon={faSignOutAlt}/></span>
         <span>나의 매장</span>
-        {stores.map((store)=><StoreShow isHost={true} storeObj={store}/>)}
-        <div>
-
+        
         </div>
+        
+        {stores.map((store)=><StoreShow isHost={true} storeObj={store}/>)}
+        
+        <span onClick={onAddClick}id="add-btn">매장 추가 <FontAwesomeIcon icon={faPlus}/></span>
+    
+    </div>
+   
     </>);
 }
 export default HostHome;

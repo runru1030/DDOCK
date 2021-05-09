@@ -3,56 +3,64 @@ import { useLocation } from 'react-router';
 import { dbService } from '../fbase';
 import HostHome from './HostHome';
 
-const HostStore=()=>{
-    const [storeObj,setStoreObj]=useState([]);
-    const [newStoreObj,setNewStoreObj]=useState({
-        remain:0,
-        wait:0,
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPen } from "@fortawesome/free-solid-svg-icons";
+const HostStore = () => {
+    const [storeObj, setStoreObj] = useState([]);
+    const [newStoreObj, setNewStoreObj] = useState({
+        remain: 0,
+        wait: 0,
     });
-    const [isEdit, setIsEdit]=useState(false);
-    const location=useLocation();
-    useEffect(()=>{
-        const getStoreObj=location.state.storeObj;
-        dbService.doc(`Stores/${getStoreObj.id}`).onSnapshot((Snaoshot)=>{
-          
-         setStoreObj(Snaoshot.data());  
+    const [isEdit, setIsEdit] = useState(false);
+    const location = useLocation();
+    useEffect(() => {
+        const getStoreObj = location.state.storeObj;
+        dbService.doc(`Stores/${getStoreObj.id}`).onSnapshot((Snaoshot) => {
+
+            setStoreObj(Snaoshot.data());
         })
     })
-    const onDelClick=()=>{
+    const onDelClick = () => {
         const ok = window.confirm("매장을 정말 삭제하시겠습니까?");
-        if(ok){
+        if (ok) {
             dbService.doc(`Stores/${storeObj.id}`).delete();
         }
     }
-    const onChange=async(event)=>{
-        const {target:{name, value}}=event;
-        setNewStoreObj(newStoreObj=>({...newStoreObj, [name]:value}))
+    const onChange = async (event) => {
+        const { target: { name, value } } = event;
+        setNewStoreObj(newStoreObj => ({ ...newStoreObj, [name]: value }))
     }
-    const onSubmit=async(event)=>{
+    const onSubmit = async (event) => {
         event.preventDefault();
         await dbService.doc(`Stores/${storeObj.id}`).update({
             remain: newStoreObj.remain,
-            wait:newStoreObj.wait,
+            wait: newStoreObj.wait,
         })
         setIsEdit(false);
     }
-    const ontoggle=()=>{
-        setIsEdit(prev=>!prev);
+    const ontoggle = () => {
+        setIsEdit(prev => !prev);
     }
-    return(<div>
-        <span>{storeObj.storeName}</span>
-        <span>{storeObj.storeSubName}</span>
-        <div>
-            <form onSubmit={onSubmit}>
-            <span>여석{isEdit?<input type="text" value={newStoreObj.remain} onChange={onChange} name="remain"/>:storeObj.remain}테이블</span>
-            
-            <span>대기{storeObj.wait}명</span>
-            {isEdit&&<input type="submit" value="변경"/>}
-            <span onClick={ontoggle}>{isEdit?"취소":"내용수정"}</span>
-            </form>
-            
+    return (<div className="Container">
+        <div className="centerContainer storeContainer">
+            <span id="storeName">{storeObj.storeName}</span>
+            <span id="storeSubName">{storeObj.storeSubName}</span>
+            <div className="centerContainer waitInfo-wrap">
+                <form onSubmit={onSubmit}>
+                    <div className="waitInfo">
+                        <span>여석{isEdit ? <input type="text" value={newStoreObj.remain} onChange={onChange} name="remain" /> : <span id="number">{storeObj.remain}</span>}<span id="small">테이블</span></span>
+                        <span>대기<span id="number">{storeObj.wait}</span><span id="small">팀</span></span>
+                    </div>
+
+                    {isEdit && <input type="submit" value="변경" />}
+                </form>
+
+                <span onClick={ontoggle}>{isEdit ? "취소" : <>여석 수정</>}</span>
+                <span>매장정보 수정 <FontAwesomeIcon icon={faPen} /></span>
+            </div>
         </div>
-        <span onClick={onDelClick}>매장 제거</span>
+
+        <span onClick={onDelClick} id="store-del">매장 제거</span>
     </div>);
 }
 export default HostStore;

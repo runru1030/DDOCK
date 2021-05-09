@@ -22,7 +22,7 @@ function App() {
           hostId:user.uid,
         })
       }
-      else setIsLoggedin(false);
+      else setIsHost(false);
     
       setInit(true);
     })
@@ -32,6 +32,7 @@ function App() {
   return (<>
     <head><script src="https://developers.kakao.com/sdk/js/kakao.js"></script></head>
     {init?<AppRouter isLoggedin={isLoggedin} ishost={ishost} hostObj={hostObj}/>:<span>Loading...</span>}
+    <footer>&copy; DDOCK {new Date().getFullYear()} by keeper</footer>
     </>
   );
 }
