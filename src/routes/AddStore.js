@@ -62,9 +62,10 @@ const AddStore = ({ hostObj }) => {
         setStoreObj(storeObj => ({ ...storeObj, [name]: value }));
     }
     const onSubmit = async (event) => {
-        if(address=="")return;
         event.preventDefault();
         try {
+            
+            if(address=="") new Error("주소를 입력해주세요.");
             let attachmentURL = "";
             if (attachment !== "") {
                 const attachmentRef = storageService.ref().child(`${hostObj.hostId}/${uuidv4()}`);
@@ -80,7 +81,7 @@ const AddStore = ({ hostObj }) => {
 
         }
         catch (error) {
-            setError(error);
+            setError(error.message);
         }
     }
     

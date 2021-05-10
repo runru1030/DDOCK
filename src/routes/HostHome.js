@@ -12,10 +12,12 @@ const HostHome=({hostObj})=>{
         history.push("/AddStore");
     }
     const onLogOutClick = () => {
+        window.localStorage.removeItem("hostObj");
         authService.signOut();
         history.push("/");
     }
     useEffect(()=>{
+        window.localStorage.removeItem("storeObj");
         dbService.collection("Stores").where("hostEmail", "==", hostObj.hostEmail).onSnapshot((Snapshot)=>{
             const storeArr=Snapshot.docs.map((doc)=>({
                 id:doc.id,

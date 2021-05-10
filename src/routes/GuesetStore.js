@@ -4,22 +4,13 @@ import { dbService } from '../fbase';
 import HostHome from './HostHome';
 
 const GuestStore = () => {
-    const [storeObj, setStoreObj] = useState([]);
+    const [storeObj, setStoreObj] = useState(()=>JSON.parse(window.localStorage.getItem("storeObj")) || 0);
     const [isReserve, setIsReserve] = useState(false);
     const [customer, setCustomer] = useState({
         name: "",
         people: "",
         phoneNum: "",
     });
-    const location = useLocation();
-    useEffect(() => {
-        const getStoreObj = location.state.storeObj;
-        dbService.doc(`Stores/${getStoreObj.id}`).onSnapshot((Snaoshot) => {
-
-            setStoreObj({ ...Snaoshot.data(), id: Snaoshot.id });
-        })
-
-    }, [])
     const ontoggle = () => {
         setIsReserve(prev => !prev);
     }
@@ -50,7 +41,11 @@ const GuestStore = () => {
                 })
             }
         });
-
+        setCustomer({
+            name: "",
+            people: "",
+            phoneNum: "",
+        });
         setIsReserve(false);
     }
     return (<div className="Container">

@@ -21,6 +21,10 @@ function App() {
           hostEmail:user.email,
           hostId:user.uid,
         })
+        window.localStorage.setItem("hostObj",JSON.stringify({
+          hostEmail:user.email,
+          hostId:user.uid,
+        }))
       }
       else setIsHost(false);
     

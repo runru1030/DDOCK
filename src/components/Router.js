@@ -1,6 +1,7 @@
 import REACT from 'react';
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import AddStore from '../routes/AddStore';
+import EditStore from '../routes/EditStore';
 import GuestStore from '../routes/GuesetStore';
 import HostHome from '../routes/HostHome';
 import HostStore from '../routes/HostStore';
@@ -24,6 +25,10 @@ const AppRouter=({isLoggedin, ishost, hostObj})=>{
                 
                 <Route exact path="/waiting">
                     <Waiting/>
+                </Route>
+                
+                <Route exact path="/editStore">
+                    <EditStore/>
                 </Route>
                
             </>

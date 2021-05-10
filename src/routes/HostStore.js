@@ -2,25 +2,11 @@ import REACT, { useEffect, useState } from 'react';
 import { useHistory, useLocation } from 'react-router';
 import { dbService } from '../fbase';
 import HostHome from './HostHome';
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPen } from "@fortawesome/free-solid-svg-icons";
 const HostStore = () => {
-    const [storeObj, setStoreObj] = useState([]);
-    const [newStoreObj, setNewStoreObj] = useState({
-        remain: 0,
-        wait: 0,
-    });
+    const storeObj =  JSON.parse(window.localStorage.getItem("storeObj")) || 0;
+    const [newStoreObj, setNewStoreObj] = useState(()=>JSON.parse(window.localStorage.getItem("storeObj")) || 0);
     const [isEdit, setIsEdit] = useState(false);
     const history = useHistory();
-    const location = useLocation();
-    useEffect(() => {
-        const getStoreObj = location.state.storeObj;
-        dbService.doc(`Stores/${getStoreObj.id}`).onSnapshot((Snapshot) => {
-
-            setStoreObj({ ...Snapshot.data(), id: Snapshot.id });
-        })
-    })
     const onDelClick = () => {
         const ok = window.confirm("매장을 정말 삭제하시겠습니까?");
         if (ok) {
@@ -49,12 +35,15 @@ const HostStore = () => {
         history.push({pathname:"/waiting",
             state:{ storeObj:storeObj}});
     }
+    const onEditClick=()=>{
+        history.push("/editStore");
+    }
     return (<div className="Container">
         <div className="centerContainer storeContainer">
             
         <span onClick={onWaitingClick} id="side-menu2">대기 관리</span>
         
-        <span id="side-menu3">매장정보 수정</span>
+        <span id="side-menu3" onClick={onEditClick}>매장정보 수정</span>
             <span id="storeName">{storeObj.storeName}</span>
             <span id="storeSubName">{storeObj.storeSubName}</span>
             <div className="centerContainer waitInfo-wrap">

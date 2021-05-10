@@ -7,14 +7,11 @@ import { dbService } from '../fbase';
 import WaitingBox from '../components/WaitingBox';
 const Waiting = () => {
     const [waitingArr, setWaitingArr] = useState([]);
-    const [storeObj, setStoreObj] = useState([]);
+    const [storeObj, setStoreObj] = useState(() => JSON.parse(window.localStorage.getItem("storeObj")) || 0);
     const location = useLocation();
     useEffect(() => {
-        const getStoreObj = location.state.storeObj;
-        setStoreObj(getStoreObj);
-        dbService.doc(`ReserveList/${getStoreObj.id}`).onSnapshot((Snapshot) => {
-            if(Snapshot.exists){
-                
+        dbService.doc(`ReserveList/${storeObj.id}`).onSnapshot((Snapshot) => {
+            if(Snapshot.exists){                
             setWaitingArr(Snapshot.data().waiting)
             }
         })

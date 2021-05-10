@@ -6,6 +6,8 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 const StoreShow=({isHost, storeObj})=>{
     const history=useHistory();
     const onStoreClick = () => {
+        
+        window.localStorage.setItem("storeObj", JSON.stringify(storeObj))
         if(isHost){
             history.push({
                 pathname: "/hostStore",
@@ -17,6 +19,7 @@ const StoreShow=({isHost, storeObj})=>{
                 state: { storeObj: storeObj }
             });
         }
+
              
     }
     return(<>
