@@ -4,7 +4,7 @@ import StoreShow from '../components/StoreShow';
 import { authService, dbService } from '../fbase';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExchangeAlt, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faExchangeAlt, faSearch, faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 const Main = () => {
     const [isHost, setIsHost] = useState(false);
     const [isJoin, setIsJoin] = useState(false);
@@ -67,7 +67,7 @@ const Main = () => {
                         <input type="password" name="password" placeholder="비밀번호" onChange={onChange} required value={joinObj.password} />
                         <input type="submit" value={isJoin ? "가입" : "로그인"} />
                     </form>
-                    <span onClick={onJoinClick}>{isJoin ? "로그인" : "호스트 가입"}</span>
+                    <span onClick={onJoinClick} id="toggle">{isJoin ? "로그인" : "호스트 가입"}</span>
                 </div>
 
             </>
@@ -94,7 +94,7 @@ const Main = () => {
                         :
                         <div className="centerContainer guest-search-ment" id="nothing-ment">
                             <span>검색결과가 없습니다</span>
-                            <FontAwesomeIcon icon={faSearch} width="50px"/>
+                            <FontAwesomeIcon icon={faQuestionCircle} width="50px"/>
                             </div>}
                     </> :<div className="storeShow">{stores.map((store) => <StoreShow storeObj={store} isHost={false} />)}</div>}
 

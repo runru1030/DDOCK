@@ -30,6 +30,7 @@ function App() {
   },[]);
   console.log(ishost)
   return (<>
+   <head><meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no" /></head>
     <head><script src="https://developers.kakao.com/sdk/js/kakao.js"></script></head>
     {init?<AppRouter isLoggedin={isLoggedin} ishost={ishost} hostObj={hostObj}/>:<span>Loading...</span>}
     <footer>&copy; DDOCK {new Date().getFullYear()} by keeper</footer>

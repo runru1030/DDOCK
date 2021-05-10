@@ -28,7 +28,7 @@ const HostHome=({hostObj})=>{
     return(<><div className="Container">
         <div className="centerContainer title hostHome">
         
-            <span onClick={onLogOutClick} id="side-menu"><FontAwesomeIcon icon={faSignOutAlt}/></span>
+            <span onClick={onLogOutClick} id="side-menu">로그아웃</span>
         <span>나의 매장</span>
         
         </div>

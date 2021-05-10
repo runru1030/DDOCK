@@ -70,9 +70,10 @@ const AddStore = ({ hostObj }) => {
                 const attachmentRef = storageService.ref().child(`${hostObj.hostId}/${uuidv4()}`);
                 const response = await attachmentRef.putString(attachment, "data_url");
                 attachmentURL = await response.ref.getDownloadURL();
-                setStoreObj(storeObj => ({ ...storeObj, menuURL: attachment }));
+                
             }
-            await dbService.collection("Stores").add(storeObj);
+            
+            await dbService.collection("Stores").add({ ...storeObj, menuURL: attachmentURL });
 
             history.push("/");
 

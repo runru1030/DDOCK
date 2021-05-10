@@ -5,6 +5,7 @@ import GuestStore from '../routes/GuesetStore';
 import HostHome from '../routes/HostHome';
 import HostStore from '../routes/HostStore';
 import Main from '../routes/Main';
+import Waiting from '../routes/Waiting';
 const AppRouter=({isLoggedin, ishost, hostObj})=>{
     return(<Router>
         <Switch>
@@ -19,6 +20,10 @@ const AppRouter=({isLoggedin, ishost, hostObj})=>{
                 </Route>
                 <Route exact path="/hostStore">
                     <HostStore/>
+                </Route>
+                
+                <Route exact path="/waiting">
+                    <Waiting/>
                 </Route>
                
             </>

@@ -7,6 +7,7 @@ body{
 }
 *{
     outline: none;
+    -webkit-appearance: none;
 }
 .Container{
     display: flex;
@@ -25,8 +26,7 @@ body{
 .guestContainer{
     width: 100%;
     padding-top: 50px;
-    padding-bottom: 50px;
-    background-color: #383838f8;
+    /* background-color: #383838f8; */
 }
 .search{
     width: 100%;
@@ -39,10 +39,14 @@ span{
     padding: 10px 20px;
     background-color: #fcfcfcd0;
     border-radius: 20px;
-    border: solid white;
+    border: solid #00c1fc;
     margin: 10px;
     font-size: small;
     width: 100%;
+}
+.guestContainer input[type=text]{
+    box-shadow: 2px 2px 2px 2px #00c1fc41;
+    -webkit-appearance: none;
 }
 .guestContainer form{
     width: 350px;
@@ -62,8 +66,17 @@ span{
 }
 .hostContainer{
     padding: 180px 0px;
+    background-color: white;
+}
+.hostContainer #toggle{
+    margin-right: -200px;
+    border: thin solid rgb(209, 209, 209);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: small;
 }
 .hostContainer input{
+    -webkit-appearance: none;
     margin: 5px;
     width: 130%;
 }
@@ -71,7 +84,7 @@ span{
     margin: 50px 0px
 }
 .hostContainer input[type=submit]{
-    background-color: #539eb5;
+    background: linear-gradient( #00c1fc,  #00c1fc);
     width: 150%;
     color: white;
     border: none;
@@ -81,28 +94,29 @@ span{
     top:0;
     right: 0;
     margin: 10px;
-    color: white;
+    color: #707070;
     z-index: 999;
+    border: thin solid rgb(209, 209, 209);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: small;
 }
 .guest-search-ment{
     font-size: 80px;
     padding: 50px 40px;
     margin-top: 50px;
-    border-radius: 30px;
-    box-shadow: 2px 2px 1px 1px rgb(196, 196, 196);
-    background-color: rgb(242, 242, 242);
     width: 190px;
 }
 .guest-search-ment *{
     margin: 10px;
-    color: #539eb5;
+    color: #00c1fc;
 }
 .guest-search-ment[id=nothing-ment] *{
-    color: #b55353;
+    color: #707070;
 }
-.storeBox{
-    box-shadow: 2px 2px 2px 2px rgb(196, 196, 196);
-    background-color: rgb(243, 243, 243);
+.storeBox, .waitingBox{
+    box-shadow: 2px 2px 1px 1px rgb(237, 237, 237);
+    border: thin solid #00c1fc;
     border-radius: 10px;
     width: 280px;
     padding: 20px;
@@ -119,7 +133,6 @@ span{
 }
 /*guestStore*/
 .storeContainer{
-    
     height: 100%;
 }
 .storeContainer span{
@@ -129,11 +142,12 @@ span{
     display: flex;
     flex-direction: column;
     background-color: white;
-    padding: 15px 50px;
-    padding-bottom: 30px;
+    padding: 10px 50px;
+    padding-top: 30px;
     width: 200px;
     border-radius: 20px;
     margin: 30px 0px;
+    border:  solid #00c1fc;
 }
 .waitInfo span{
     font-size: x-large;
@@ -141,13 +155,18 @@ span{
     margin: 5px;
     color: rgb(60, 60, 60);
 }
+.waitInfo-span-wrap{
+    display: flex;
+}
 .waitInfo #number{
-    color: #539eb5;
+    color: #00c1fc;
     font-size: 50px;
     margin-left: 50px;
+    transform: translate(0, -20px);
 }
 .waitInfo #small{
     font-size: medium;
+    transform: translate(0, 10px);
 }
 #storeName{
     font-size: large;
@@ -160,7 +179,7 @@ span{
 #reserve{
     font-size: medium;
     padding: 10px 20px;
-    background-color: #539eb5;
+    background-color: #00c1fc;
     margin: 10px;
     border-radius: 10px;
     color: white;
@@ -170,12 +189,14 @@ span{
     font-size: x-small;
     display: flex;
     flex-direction: column;
+    height: 100%;
+    padding-bottom: 50px;
 }
 .storeinfo hr{
     width: 100%;
     border: none;
     margin-top: 50px;
-    border-top: thin solid rgba(68, 68, 68, 0.227);
+    border-top: thin solid #00c1fc;
 }
 .storeinfo #title{
     margin-right: 190px;
@@ -192,6 +213,9 @@ span{
 .waitInfo-wrap{
     margin: 50px 0px;
 }
+.waitInfo-wrap .toggle-btn{
+    color: #00c1fc;
+}
 .waitInfo-wrap form{
     margin-bottom: 30px;
 }
@@ -200,20 +224,18 @@ span{
     margin-left: 30px;
     font-size: xx-large;
     text-align: end;
-    border-radius: 0;
-    color: rgb(184, 67, 67);
-    border: thin solid rgb(112, 112, 112);
-    
+    border-radius: 10px;
+    border: thin solid rgb(212, 212, 212);
+    padding: 0;
 }
 .waitInfo-wrap input[type=submit]{
     font-size: medium;
     padding: 10px 20px;
-    background-color: #539eb5;
+    background-color: #00c1fc;
     border: none;
     margin: 10px;
     border-radius: 10px;
     color: white;
-    transform: translate(100px, 0);
 }
 /*addSotre*/
 .addStore{
@@ -275,10 +297,10 @@ span{
 }
 .addStore-form input[type=submit]{
     padding: 10px 20px;
-    background-color: #539eb5;
+    background-color: #00c1fc;
     border: none;
     margin: 10px;
-    border-radius: 0px;
+    border-radius: 20px;
     color: white;
 }
 /*hostHome*/
@@ -288,19 +310,122 @@ span{
 .hostHome{
     margin-bottom: 30px;
 }
-#side-menu{
+#side-menu, #side-menu2{
     position: absolute;
     right: 0;
-    padding: 0px 30px;
-    font-size: large;
+    margin: 0px 20px;
+    margin-top: -5px;
+    font-size: small;
     color: #b55353;
+    border: thin solid #b55353;
+    padding: 5px 10px;
+    border-radius: 20px;
 }
 #add-btn{
     padding: 10px 20px;
-    background-color: #539eb5;
+    background-color: #00c1fc;
     border: none;
     margin: 10px;
-    border-radius: 0px;
+    border-radius: 20px;
     color: white;
     
+}
+/*waiting*/
+.waitingBox{
+    display: flex;
+    flex-direction: column;
+}
+.enter-btn{
+    position: absolute;
+    right: 80px;
+    background-color: #00c1fc;
+    padding: 5px 10px;
+    border-radius: 20px;
+    color: white;
+}
+#side-menu2{
+    position: absolute;
+    top:0;
+    right: 0;
+    margin: 15px;
+    border: thin solid #00c1fc;
+    color: #00c1fc;
+}
+/*reserve*/
+.reserve-wrap{
+    width: 70%;
+    border: solid #00c1fc;
+    background-color: rgba(255, 255, 255, 0.068);
+    border-radius: 20px;
+    padding: 30px 10px;
+    color: #707070;
+}
+.reserve-wrap .ment{
+    font-size: small;
+    text-align: center;
+    width: 80%;
+    color: #ff9191;
+}
+.reserve-input{
+    display: flex;
+    margin: 5px;
+}
+.reserve-input span{
+    width: 60px;
+}
+.reserve-input input{
+    border:none;
+    padding: 5px 10px;
+    border-radius: 0;
+    width: 50px;
+    background-color: rgb(221, 221, 221);
+    border-radius: 10px;
+    font-size: medium;
+}
+.phone input{
+    width: 100px;
+}
+.reserve-wrap input[type=submit]{
+    background-color: #00c1fc;
+    padding:  5px 20px;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    margin: 10px;
+    font-size: medium;
+}
+#side-menu3{
+    position: absolute;
+    border-radius: 20px;
+    padding: 5px 10px;
+    top:0;
+    left: 0;
+    margin: 15px;
+    font-size: small;
+    border: thin solid white;
+    color: white;
+}
+.waiting-ment{
+    padding: 20px;
+    margin-top: 50px;
+    color: #00c1fc;
+    border: thin solid rgb(206, 206, 206);
+    border-radius: 20px;
+}
+#waiting-count{
+    background-color: #00c1fc;
+    padding:  5px 10px;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    margin: 10px;
+}
+/*footer*/
+footer{
+    text-align: center;
+    width: 100%;
+    color: #707070;
+    border-top: thin solid #707070;
+    padding:10px 0;
+    font-size: xx-small;
 }
