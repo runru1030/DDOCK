@@ -9,11 +9,18 @@ body{
     outline: none;
     -webkit-appearance: none;
 }
+.blue-button{
+    padding: 10px 20px;
+    background-color: #00c1fc;
+    border: none;
+    border-radius: 10px;
+    color: white;
+}
 .Container{
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 75vh;
+    min-height: 80vh;
     margin-bottom: 50px;
 }
 .centerContainer{
@@ -31,7 +38,6 @@ body{
 .guestContainer{
     width: 100%;
     padding-top: 50px;
-    /* background-color: #383838f8; */
 }
 .search{
     width: 100%;
@@ -52,9 +58,7 @@ span{
 .guestContainer input[type=text]{
     box-shadow: 2px 2px 2px 2px #00c1fc41;
     margin-top: -30px;
-}
-.guestContainer form{
-    width: 350px;
+    width: 300px;
     display: flex;
     margin-top: 10px;
 }
@@ -81,7 +85,6 @@ span{
     font-size: small;
 }
 .hostContainer input{
-    -webkit-appearance: none;
     margin: 5px;
     width: 130%;
 }
@@ -117,7 +120,7 @@ span{
     margin: 10px;
     color: #9e9e9e;
 }
-.storeBox, .waitingBox{
+.box-container{
     box-shadow: 2px 2px 1px 1px rgb(237, 237, 237);
     border: thin solid #00c1fc;
     border-radius: 10px;
@@ -135,6 +138,9 @@ span{
     font-size: x-small;
 }
 /*guestStore*/
+#map{
+    margin-top: 30px;
+}
 .storeContainer{
     height: 100%;
 }
@@ -181,11 +187,7 @@ span{
 }
 #reserve{
     font-size: medium;
-    padding: 10px 20px;
-    background-color: #00c1fc;
     margin: 10px;
-    border-radius: 10px;
-    color: white;
 }
 .storeinfo{
     width: 90%;
@@ -208,6 +210,23 @@ span{
     font-size: small;
     color: rgb(79, 79, 79);
 }
+#call-link{
+    text-decoration: none;
+    font-size: xx-small;
+    margin-left: 20px;
+}
+#call-link:link {
+    color : white;
+  }
+#call-link:visited {
+    color : white;
+  }
+#call-link:hover {
+   color : white;
+  }
+#call-link:active {
+    color : white
+  }
 /*hostStore*/
 #store-del{
     padding: 50px;
@@ -233,32 +252,33 @@ span{
 }
 .waitInfo-wrap input[type=submit]{
     font-size: medium;
-    padding: 10px 20px;
-    background-color: #00c1fc;
     border: none;
     margin: 10px;
-    border-radius: 10px;
-    color: white;
 }
 /*addSotre*/
-.addStore{
+.aboutStore{
     flex-direction: row;
     width: 400px;
 }
-.addStore-form{
+.aboutStore-form{
     display: flex;
     flex-direction: column;
     height: 100%;
     padding: 50px 30px;
     width: 100%;
 }
-.addStore-form *{
+.aboutStore-form *{
     margin: 10px 0px;
 }
-.addStore-form input[type=text], #textArea{
+.aboutStore-form input[type=text],.aboutStore-form input[type=tel], #textArea{
     padding: 10px;
     border: thin solid #b8b8b8f8;
     border-radius: 0;
+    font-size: medium;
+}
+.aboutStore-form input[name=storeCall]{
+    width: 100px;
+    
 }
 .title{
     background-color: #383838f8;
@@ -278,7 +298,7 @@ span{
 .postCode{
     width: 120%;
 }
-.addStore-form-time input{
+.aboutStore-form-time input{
     width: 30px;
 }
 #search-box{
@@ -300,7 +320,7 @@ span{
 #attachmentDel{
     color: #b55353;
 }
-.addStore-form input[type=submit]{
+.aboutStore-form input[type=submit]{
     padding: 10px 20px;
     background-color: #00c1fc;
     border: none;
@@ -328,22 +348,17 @@ span{
     border-radius: 20px;
 }
 #add-btn{
-    padding: 10px 20px;
-    background-color: #00c1fc;
-    border: none;
     margin: 10px;
-    border-radius: 20px;
-    color: white;
-    
 }
 /*waiting*/
 .waitingBox{
     display: flex;
     flex-direction: column;
+    width: 300px;
 }
 .enter-btn{
     position: absolute;
-    right: 80px;
+    transform: translate(250px);
     background-color: #00c1fc;
     padding: 5px 10px;
     border-radius: 20px;
@@ -356,6 +371,12 @@ span{
     margin: 15px;
     border: thin solid #00c1fc;
     color: #00c1fc;
+}
+#time{
+    position: absolute;
+    transform: translate(255px, 50px);
+    color: #707070;
+    font-size:small;
 }
 /*reserve*/
 .reserve-wrap{
@@ -434,4 +455,11 @@ footer{
     border-top: thin solid #707070;
     padding:10px 0;
     font-size: xx-small;
+}
+#loading{
+    display: block;
+    text-align: center;
+    transform: translate(0, 50%);
+    height: 80vh;
+    color: #00c1fc;
 }

@@ -1,14 +1,10 @@
 import REACT, { useEffect, useState } from 'react';
-import { useHistory, useLocation } from 'react-router';
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { dbService } from '../fbase';
 import WaitingBox from '../components/WaitingBox';
+
 const Waiting = () => {
     const [waitingArr, setWaitingArr] = useState([]);
     const [storeObj, setStoreObj] = useState(() => JSON.parse(window.localStorage.getItem("storeObj")) || 0);
-    const location = useLocation();
     useEffect(() => {
         dbService.doc(`ReserveList/${storeObj.id}`).onSnapshot((Snapshot) => {
             if(Snapshot.exists){                

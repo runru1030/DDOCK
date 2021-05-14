@@ -4,10 +4,11 @@ import App from './components/App';
 import fbase from "./fbase.js";
 import "./styles.css";
 
-ReactDOM.render(
+ReactDOM.render(<>
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
+  </React.StrictMode></>
+  ,
   document.getElementById('root')
 );
 

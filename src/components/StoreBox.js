@@ -1,12 +1,11 @@
 import REACT, { useState } from 'react';
 import { useHistory } from 'react-router';
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
-const StoreShow=({isHost, storeObj})=>{
+
+const StoreBox=({isHost, storeObj})=>{
     const history=useHistory();
     const onStoreClick = () => {
-        
         window.localStorage.setItem("storeObj", JSON.stringify(storeObj))
         if(isHost){
             history.push({
@@ -18,13 +17,11 @@ const StoreShow=({isHost, storeObj})=>{
                 pathname: "/guestStore",
                 state: { storeObj: storeObj }
             });
-        }
-
-             
+        }    
     }
     return(<>
         
-        <div className="storeBox" onClick={onStoreClick}>
+        <div className="box-container storeBox" onClick={onStoreClick}>
             <span>{storeObj.storeName}</span>
             <span id="subName">{storeObj.storeSubName}</span>
             <span id="go" ><FontAwesomeIcon icon={faChevronRight}/></span>
@@ -33,4 +30,4 @@ const StoreShow=({isHost, storeObj})=>{
     </>);
 
 }
-export default StoreShow;
+export default StoreBox;
