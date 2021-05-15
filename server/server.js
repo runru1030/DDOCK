@@ -12,9 +12,9 @@ var Base64 = require("crypto-js/enc-base64");
 
 app.use(express.static(path.join(__dirname, '../src/build')));
 
-app.get('*', (req, res) => {
+/* app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname+'../src/build/index.html'));
-});
+}); */
 app.use('/api', api);
 app.use(cors());
 app.get('/', (req, res) =>

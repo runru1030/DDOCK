@@ -65,7 +65,7 @@ const Main = () => {
 
                     <div className="centerContainer hostContainer">
 
-                        <img src="logo.png" width="200px" />
+                        <img src="src/images/logo.png" width="200px" />
                         <form onSubmit={onSubmit} className="centerContainer">
                             <input type="text" name="email" placeholder="이메일" onChange={onChange} required value={joinObj.email} />
                             <input type="password" name="password" placeholder="비밀번호" onChange={onChange} required value={joinObj.password} />
@@ -82,7 +82,7 @@ const Main = () => {
                     <span id="changeSpan" onClick={onSelectClick}><FontAwesomeIcon icon={faExchangeAlt} /> {isHost ? "게스트" : "호스트"}</span>
                     <div className="centerContainer guestContainer">
                         <div className="centerContainer search">
-                            <img src="logo.png" width="200px" />
+                            <img src="src/images/logo.png" width="200px" />
                             <input type="text" placeholder="매장명" name="search" value={search} onChange={onChange} />
                         </div>
                     </div>
