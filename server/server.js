@@ -3,12 +3,18 @@ const app = express();
 const cors = require('cors');
 const api = require('./routes/index');
 const request = require('request');
+const path = require('path');
 
 require('dotenv').config();
 var CryptoJS = require("crypto-js");
 var SHA256 = require("crypto-js/sha256");
 var Base64 = require("crypto-js/enc-base64");
 
+app.use(express.static(path.join(__dirname, '/src/build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/src/build/index.html'));
+});
 app.use('/api', api);
 app.use(cors());
 app.get('/', (req, res) =>
