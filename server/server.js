@@ -9,12 +9,13 @@ require('dotenv').config();
 var CryptoJS = require("crypto-js");
 var SHA256 = require("crypto-js/sha256");
 var Base64 = require("crypto-js/enc-base64");
-
-app.use(express.static(path.join(__dirname, '../src/build')));
-
-/* app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'../src/build/index.html'));
-}); */
+  //"client/build"는 react의 build파일 경로이다
+    app.use(express.static("src/build"));
+  
+  //"..client"는 react 프로젝트의 파일 경로, "build"는 react프로젝트 내의 build폴더이다
+    app.get("*", (req, res) => {
+      res.sendFile(path.resolve(__dirname, "../src", "build", "index.html"));
+    });
 app.use('/api', api);
 app.use(cors());
 app.get('/', (req, res) =>
