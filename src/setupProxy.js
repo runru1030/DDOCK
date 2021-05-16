@@ -4,7 +4,7 @@ module.exports = function (app) {
     app.use(
         '/sms',
         createProxyMiddleware({
-            target: 'https://ddock-99.herokuapp.com/',
+            target: 'http://localhost:3001/',
             changeOrigin: true,
         })
     );
