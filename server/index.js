@@ -7,19 +7,6 @@ require('dotenv').config();
 var CryptoJS = require("crypto-js");
 var SHA256 = require("crypto-js/sha256");
 var Base64 = require("crypto-js/enc-base64");
-/*   //"client/build"는 react의 build파일 경로이다
-    app.use(express.static("src/build"));
-  
-  //"..client"는 react 프로젝트의 파일 경로, "build"는 react프로젝트 내의 build폴더이다
-    app.get("*", (req, res) => {
-      res.sendFile(path.resolve(__dirname, "../src", "build", "index.html"));
-    });
-app.use('/api', api);
-app.use(cors());
-app.get('/', (req, res) =>
-  res.send({ greeting: 'Hello React x Node.js' })
-); */
-
 
 // 미들웨어 함수를 특정 경로에 등록
 app.use('/api/data', function(req, res) {
@@ -31,8 +18,6 @@ app.get('/sms/:phone/:store', (req, res) => {
   res.send("complete!");
 });
 // 기본 포트를 app 객체에 설정
-const port = process.env.PORT || 3001;
-app.listen(port);
 
 // 리액트 정적 파일 제공
 app.use(express.static(path.join(__dirname, 'src/build')));
@@ -42,6 +27,8 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname+'/src/build/index.html'));
 });
 
+const port = process.env.PORT || 3001;
+app.listen(port);
 console.log(`server running at http ${port}`);
 
 function send_message(phone, store) {
