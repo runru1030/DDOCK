@@ -39,7 +39,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "backend": "nodemon ./server/server.js",
+    "backend": "nodemon ./server/index.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
