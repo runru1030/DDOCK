@@ -19,13 +19,15 @@ app.get('/sms/:phone/:store', (req, res) => {
 });
 // 기본 포트를 app 객체에 설정
 
-// 리액트 정적 파일 제공
-app.use(express.static(path.join(__dirname, 'src/build')));
+if (process.env.NODE_ENV === "production") {
+  // Express will serve up production assets
+  app.use(express.static("../build"));
 
-// 라우트 설정
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'/src/build/index.html'));
-});
+  // Express will serve up the front-end index.html file if it doesn't recognize the route
+  app.get("*", (req, res) =>
+    res.sendFile(path.resolve("../build", "index.html"))
+  );
+}
 
 const port = process.env.PORT || 3001;
 app.listen(port);
