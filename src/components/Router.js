@@ -1,5 +1,5 @@
 import REACT from 'react';
-import { HashRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import AddStore from '../routes/AddStore';
 import EditStore from '../routes/EditStore';
 import GuestStore from '../routes/GuesetStore';
@@ -15,18 +15,18 @@ const AppRouter = ({ ishost, hostObj }) => {
                     <Route exact path="/">
                         <HostHome hostObj={hostObj} />
                     </Route>
-                    <Route exact path="/AddStore">
+                    <Route exact path="/host/addStore">
                         <AddStore hostObj={hostObj} />
                     </Route>
-                    <Route exact path="/hostStore">
+                    <Route exact path="/host/store">
                         <HostStore />
                     </Route>
 
-                    <Route exact path="/waiting">
+                    <Route exact path="/host/waiting">
                         <Waiting />
                     </Route>
 
-                    <Route exact path="/editStore">
+                    <Route exact path="/host/editStore">
                         <EditStore />
                     </Route>
 
@@ -37,7 +37,7 @@ const AppRouter = ({ ishost, hostObj }) => {
                     <Route exact path="/">
                         <Main />
                     </Route>
-                    <Route exact path="/guestStore">
+                    <Route exact path="/guest/store">
                         <GuestStore />
                     </Route>
                 </>

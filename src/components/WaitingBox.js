@@ -1,4 +1,3 @@
-import REACT, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { dbService } from '../fbase';
 const WaitingBox = ({ waitingObj, storeObj }) => {
@@ -12,7 +11,7 @@ const WaitingBox = ({ waitingObj, storeObj }) => {
             dbService.doc(`Stores/${storeObj.id}`).update({
                 wait: get.data().waiting.length - 1
             })
-        })
+        });
     }
     return (<>
         <div className="box-container waitingBox" >
