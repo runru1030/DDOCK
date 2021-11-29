@@ -1,32 +1,29 @@
-import REACT, { useState } from 'react';
 import { useHistory } from 'react-router';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
-const StoreBox=({isHost, storeObj})=>{
-    const history=useHistory();
+const StoreBox = ({ isHost, storeObj }) => {
+    const history = useHistory();
     const onStoreClick = () => {
-        window.localStorage.setItem("storeObj", JSON.stringify(storeObj))
-        if(isHost){
+        window.localStorage.setItem("storeObj", JSON.stringify(storeObj));
+        if (isHost) {
             history.push({
-                pathname: "/hostStore",
+                pathname: "/host/store",
                 state: { storeObj: storeObj }
             });
-        }else{
+        } else {
             history.push({
-                pathname: "/guestStore",
+                pathname: "/guest/store",
                 state: { storeObj: storeObj }
             });
-        }    
+        }
     }
-    return(<>
-        
+    return (<>
         <div className="box-container storeBox" onClick={onStoreClick}>
             <span>{storeObj.storeName}</span>
             <span id="subName">{storeObj.storeSubName}</span>
-            <span id="go" ><FontAwesomeIcon icon={faChevronRight}/></span>
+            <span id="go" ><FontAwesomeIcon icon={faChevronRight} /></span>
         </div>
-       
     </>);
 
 }

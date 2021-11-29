@@ -30,8 +30,6 @@ function App() {
   }, []);
 
   return (<>
-
-    <head><meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no" /></head>
     {init ? <AppRouter ishost={ishost} hostObj={hostObj} /> : <span id="loading">Loading...</span>}
     <footer>&copy; DDOCK {new Date().getFullYear()} by keeper</footer>
   </>

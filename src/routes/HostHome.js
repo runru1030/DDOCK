@@ -3,12 +3,12 @@ import { useHistory } from 'react-router';
 import { authService, dbService } from '../fbase';
 import StoreBox from '../components/StoreBox.js'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 const HostHome = ({ hostObj }) => {
     const history = useHistory();
     const [stores, setStores] = useState([]);
     const onAddClick = () => {
-        history.push("/AddStore");
+        history.push("/host/addStore");
     }
     const onLogOutClick = () => {
         window.localStorage.removeItem("hostObj");

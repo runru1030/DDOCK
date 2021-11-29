@@ -1,10 +1,9 @@
 import REACT, { useEffect, useState } from 'react';
-import { useHistory, useLocation } from 'react-router';
+import { useHistory } from 'react-router';
+import Form from '../components/HostStore/Form';
 import { dbService } from '../fbase';
 const HostStore = () => {
     const [storeObj, setStoreObj] = useState(() => JSON.parse(window.localStorage.getItem("storeObj")) || 0)
-    const [newStoreObj, setNewStoreObj] = useState(() => JSON.parse(window.localStorage.getItem("storeObj")) || 0);
-    const [isEdit, setIsEdit] = useState(false);
     const history = useHistory();
 
     useEffect(() => {
@@ -12,8 +11,8 @@ const HostStore = () => {
             window.localStorage.setItem("storeObj", JSON.stringify({ ...snapshot.data(), id: snapshot.id }))
             console.log(snapshot.data())
             setStoreObj({ ...snapshot.data(), id: snapshot.id });
-        })
-    }, [])
+        });
+    }, []);
 
     const onDelClick = () => {
         const ok = window.confirm("매장을 정말 삭제하시겠습니까?");
@@ -23,26 +22,12 @@ const HostStore = () => {
             history.push("/");
         }
     }
-    const onChange = async (event) => {
-        const { target: { name, value } } = event;
-        setNewStoreObj(newStoreObj => ({ ...newStoreObj, [name]: value }))
-    }
-    const onSubmit = async (event) => {
-        event.preventDefault();
-        await dbService.doc(`Stores/${storeObj.id}`).update({
-            remain: newStoreObj.remain,
-            wait: newStoreObj.wait,
-        })
-        setIsEdit(false);
-    }
-    const ontoggle = () => {
-        setIsEdit(prev => !prev);
-    }
+
     const onWaitingClick = () => {
-        history.push("/waiting");
+        history.push("/host/waiting");
     }
     const onEditClick = () => {
-        history.push("/editStore");
+        history.push("/host/editStore");
     }
     return (
         <div className="Container">
@@ -53,25 +38,7 @@ const HostStore = () => {
                 <span id="storeName">{storeObj.storeName}</span>
                 <span id="storeSubName">{storeObj.storeSubName}</span>
 
-                <div className="centerContainer waitInfo-wrap">
-                    <form onSubmit={onSubmit} className="centerContainer">
-                        <div className="waitInfo">
-                            <div className="waitInfo-span-wrap">
-                                <span>여석</span>{isEdit ? <input type="text" value={newStoreObj.remain} onChange={onChange} name="remain" />
-                                    : <span id="number">{storeObj.remain}</span>}
-                                <span id="small">테이블</span>
-                            </div>
-                            <div className="waitInfo-span-wrap">
-                                <span>대기</span>
-                                <span id="number">{storeObj.wait}</span>
-                                <span id="small">팀</span>
-                            </div>
-                        </div>
-                        {isEdit && <input type="submit" value="변경" />}
-                    </form>
-
-                    {storeObj.wait == 0 && <span onClick={ontoggle} className="toggle-btn">{isEdit ? "취소" : <>여석 수정</>}</span>}
-                </div>
+                <Form/>
             </div>
 
             <span onClick={onDelClick} id="store-del">매장 제거</span>

@@ -13,18 +13,8 @@ const MapContainer = () => {
         const map = new kakao.maps.Map(container, options);
         var geocoder = new kakao.maps.services.Geocoder();
         geocoder.addressSearch(storeObj.storeAddress, function (result, status) {
-
-            
             if (status === kakao.maps.services.Status.OK) {
-
                 var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-
-                
-                var marker = new kakao.maps.Marker({
-                    map: map,
-                    position: coords
-                });
-
                 map.setCenter(coords);
             }
         });
